@@ -1,0 +1,30 @@
+{
+  "name": "snapchat-share",
+  "version": "1.0.0",
+  "description": "Create your own shares for Snapchat, similar to Spotify's implementation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajmeese7/snapchat-share.git"
+  },
+  "keywords": [
+    "snapchat",
+    "instagram",
+    "share"
+  ],
+  "author": "Aaron Meese",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/ajmeese7/snapchat-share/issues"
+  },
+  "homepage": "https://github.com/ajmeese7/snapchat-share#readme",
+  "dependencies": {
+    "browserify": "^16.5.1",
+    "node-vibrant": "^3.1.5",
+    "trianglify": "^4.0.0",
+    "uniq": "^1.0.1"
+  }
+}
