@@ -48,8 +48,9 @@ Next, download the project and change into the project directory. Open a termina
 within that directory and run `npm install` to download the required dependencies.
 
 Since the project is currently configured to display the result in your browser,
-you must run `browserify index.js -o bundle.js` to bundle all the required files
-into one JavaScript file that the browser can use.
+you must run `browserify index.js --standalone share > bundle.js` to bundle all the required files
+into one JavaScript file that the browser can use. When you want to call the function, it will 
+be called like `share.getShareImage(...)`.
 
 Once you've done that, you can open the `index.html` file to make sure everything is
 functioning properly. If you see something on the screen, you're good to go! Move on

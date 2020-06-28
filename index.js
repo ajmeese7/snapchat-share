@@ -1,9 +1,6 @@
 var Vibrant = require("node-vibrant");
 const trianglify = require('trianglify')
 
-// Example function call
-getShareImage(350, 600, "https://res.cloudinary.com/couponbooked/image/upload/v1593047435/templates/books/Friend/friends_mmvend.png", "Friend", "For my bestie.");
-
 /**
  * Generates and displays an image that matches the description
  * in the README file. Can eaily be modified to return the canvas 
@@ -53,12 +50,18 @@ function getShareImage(width, height, url, bigText, smallText) {
         ctx.textAlign = 'center';
         ctx.fillText(bigText, width / 2, textY);
 
-        ctx.font = `18px ${font}`;
-        ctx.fillStyle = "#A9A9A9";
-        ctx.fillText(smallText, width / 2, textY + 30);
+        if (!!smallText) {
+          ctx.font = `18px ${font}`;
+          ctx.fillStyle = "#A9A9A9";
+          ctx.fillText(smallText, width / 2, textY + 30);
+        }
       }
       
-      // You can uncomment the following to save the image
-      document.body.appendChild(canvas);
-    });
+      // Until I change it from the promise format, there is no way to
+      // return a value back to the synchronous JavaScript. Hence my 
+      // workaround by passing it as a parameter to another function.
+      addCanvasToPage(canvas);
+    }).catch((err) => alert(err)); // Lazy error handling for now
 }
+
+module.exports = { getShareImage };
