@@ -13,6 +13,7 @@ input {
     width: 400px;
     margin-top: 5px;
     margin-bottom: 10px;
+    max-width: 90vw;
 }
 input[type=text] {
     height: 25px;
@@ -21,11 +22,12 @@ input[type=text] {
 input[type=button] {
     background-color: #FFFC00;
     text-decoration: none;
+    display: block;
+    margin: auto;
     color: black;
+    border: 1px solid black;
     font-size: 18px;
     height: 35px;
-    border: 1px solid black;
-    margin: 4px 2px;
     cursor: pointer;
 }
 
