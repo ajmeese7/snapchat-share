@@ -1,3 +1,7 @@
+*:focus {
+    outline: none;
+}
+
 form {
     margin: auto;
     margin-top: 50px;
@@ -15,12 +19,12 @@ input[type=text] {
     padding: 6px;
 }
 input[type=button] {
-    background-color: #4C7CAF;
+    background-color: #FFFC00;
     text-decoration: none;
-    color: white;
+    color: black;
     font-size: 18px;
     height: 35px;
-    border: none;
+    border: 1px solid black;
     margin: 4px 2px;
     cursor: pointer;
 }
