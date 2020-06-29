@@ -19,8 +19,9 @@ function getShareImage(width, height, url, bigText, smallText) {
       for (const swatch in palette) {
         // Adds the even numbered swatches, which are typically
         // vibrant, dark vibrant, and light vibrant/muted
-        let rgb = `rgb(${palette[swatch]._rgb.toString()})`;
-        if (i % 2) colors.push(rgb);
+        let rgb = palette[swatch]._rgb.map(x => Math.round(x))
+        let color = `rgb(${rgb.toString()})`;
+        if (i % 2) colors.push(color);
         i++;
       }
     }).then(() => {
