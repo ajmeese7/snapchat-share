@@ -19,6 +19,8 @@
     <form>
         <label for="image_url">Image URL:</label><br>
         <input type="text" id="image_url" name="image_url" placeholder="website.com/your_image_url"><br>
+        <label for="local_img">Local Image:</label><br>
+        <input type="file" id="local_img" name="local_img" accept="image/*"><br>
 
         <label for="big_text">Big Text:</label><br>
         <input type="text" id="big_text" name="big_text" placeholder="Your text here"><br>
@@ -41,6 +43,7 @@
          */
         function prepShareCommand() {
             let url = document.getElementById("image_url").value;
+            if (!url) url = URL.createObjectURL(document.getElementById("local_img").files[0]);
             let bigText = document.getElementById("big_text").value;
             let smallText = document.getElementById("small_text").value;
             let width = document.getElementById("width").value;
