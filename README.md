@@ -1,5 +1,20 @@
 # snapchat-share
-Create your own shares for Snapchat, similar to Spotify's implementation.
+
+<p align="center">
+  <h3 align="center">👻Snapchat Share👻</h3>
+</p>
+
+----
+
+<p align="center">
+   <img src="https://img.shields.io/badge/language-HTML-red"/>
+   <img src="https://img.shields.io/github/license/ajmeese7/snapchat-share"/>
+   <img src="https://img.shields.io/github/stars/ajmeese7/snapchat-share"/>
+   <img src="https://img.shields.io/github/forks/ajmeese7/snapchat-share"/>
+   <img src="https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flat&color=BC4E99" alt="Star Badge"/>
+</p>
+
+<p align="center">Create your own shares for Snapchat, similar to Spotify's implementation.</p>
 
 ## Idea
 I'm sure many of you are familiar with Spotify and Snapchat. Both companies
@@ -13,7 +28,7 @@ project such as this one can handle both use cases.
 
 Here is an example of the Spotify-generated share page in Snapchat:
 
-![](https://user-images.githubusercontent.com/17814535/85864633-666cd600-b78a-11ea-8665-21e1e6b60504.jpg)
+![Spotify Share Example](https://user-images.githubusercontent.com/17814535/85864633-666cd600-b78a-11ea-8665-21e1e6b60504.jpg)
 
 I thought that was super neat, but on my integration I wanted to make it a little
 fancier. So I did.
@@ -27,13 +42,13 @@ color palette generator that takes an image as input.
 I simply combined the two, used an HTML wrapper so I could create an image
 element to stick right in the middle of the Canvas, and this is the result:
 
-![](https://user-images.githubusercontent.com/17814535/85798729-92914400-b703-11ea-9844-710d9b3753e7.png)
+![Snapchat Share Example](https://user-images.githubusercontent.com/17814535/85798729-92914400-b703-11ea-9844-710d9b3753e7.png)
 
 As neat as that was, the Spotify share included some helpful details along with
 the image, in their case the song name and artist. I figured it would be cool
 to offer similar functionality, so I included a text parameter as well:
 
-![](https://user-images.githubusercontent.com/17814535/85852715-c6f21800-b776-11ea-8ed2-786f770276fd.png)
+![Snapchat Share with Text](https://user-images.githubusercontent.com/17814535/85852715-c6f21800-b776-11ea-8ed2-786f770276fd.png)
 
 Yes, the text doesn't look all that great right now. I wanted to use a nicer looking
 font like Spotify did, but I don't have the time to implement non-web safe fonts right
