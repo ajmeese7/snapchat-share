@@ -15,6 +15,11 @@
 </p>
 
 <p align="center">Create your own shares for Snapchat, similar to Spotify's implementation.</p>
+<p align="center">
+  <img height="450px" alt="Spotify Share Example" src="https://user-images.githubusercontent.com/17814535/85864633-666cd600-b78a-11ea-8665-21e1e6b60504.jpg">
+  <img height="450px" alt="Snapchat Share Example" src="https://user-images.githubusercontent.com/17814535/85798729-92914400-b703-11ea-9844-710d9b3753e7.png">
+  <img height="450px" alt="Snapchat Share with Text" src="https://user-images.githubusercontent.com/17814535/85852715-c6f21800-b776-11ea-8ed2-786f770276fd.png">
+</p>
 
 ## Idea
 I'm sure many of you are familiar with Spotify and Snapchat. Both companies
@@ -26,10 +31,6 @@ integration with Snapchat in its sharing feature. It has the same integration
 with Instagram, but you can use the same content for either app, so one
 project such as this one can handle both use cases.
 
-Here is an example of the Spotify-generated share page in Snapchat:
-
-![Spotify Share Example](https://user-images.githubusercontent.com/17814535/85864633-666cd600-b78a-11ea-8665-21e1e6b60504.jpg)
-
 I thought that was super neat, but on my integration I wanted to make it a little
 fancier. So I did.
 
@@ -40,15 +41,12 @@ the application is hoping to share, so I did some Window shopping and found
 color palette generator that takes an image as input.
 
 I simply combined the two, used an HTML wrapper so I could create an image
-element to stick right in the middle of the Canvas, and this is the result:
-
-![Snapchat Share Example](https://user-images.githubusercontent.com/17814535/85798729-92914400-b703-11ea-9844-710d9b3753e7.png)
+element to stick right in the middle of the canvas, which is the middle image
+you see above.
 
 As neat as that was, the Spotify share included some helpful details along with
 the image, in their case the song name and artist. I figured it would be cool
-to offer similar functionality, so I included a text parameter as well:
-
-![Snapchat Share with Text](https://user-images.githubusercontent.com/17814535/85852715-c6f21800-b776-11ea-8ed2-786f770276fd.png)
+to offer similar functionality, so I included a text parameter as well.
 
 Yes, the text doesn't look all that great right now. I wanted to use a nicer looking
 font like Spotify did, but I don't have the time to implement non-web safe fonts right
