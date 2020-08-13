@@ -2,8 +2,6 @@
   <h1 align="center">👻Snapchat Share👻</h1>
 </p>
 
-----
-
 <p align="center">
    <img src="https://img.shields.io/badge/language-HTML-red"/>
    <img src="https://img.shields.io/github/license/ajmeese7/snapchat-share"/>
