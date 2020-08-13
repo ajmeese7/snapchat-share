@@ -1,7 +1,5 @@
-# snapchat-share
-
 <p align="center">
-  <h3 align="center">👻Snapchat Share👻</h3>
+  <h1 align="center">👻Snapchat Share👻</h1>
 </p>
 
 ----
