@@ -2,7 +2,7 @@
  * Generates a canvas and appends it to the body, after clearing
  * out any previous canvases that may have been on the page.
  */
-async function prepShareCommand() {
+async function generateImage() {
     let url = document.getElementById("image_url").value;
     if (!url) url = URL.createObjectURL(document.getElementById("local_img").files[0]);
     let bigText = document.getElementById("big_text").value;

@@ -11,13 +11,9 @@ const trianglify = require('trianglify')
  * @param {string} bigText - larger text; optional parameter
  * @param {string} smallText - smaller text; required if big text used
  * @returns {element} canvas - the generated image on a canvas
- * 
- * TODO: Add default values to params, and develop this as if it's the 
- * circle graph library in npm for general use.
  */
 async function getShareImage(width, height, url, bigText, smallText) {
   const palette = await Vibrant.from(url).getPalette(async (err, palette) => {
-    // TODO: Find a better way to handle errors
     if (err) return console.error("Error getting share image:", err);
     return palette;
   });
@@ -25,7 +21,6 @@ async function getShareImage(width, height, url, bigText, smallText) {
   if (!palette) return undefined;
   const colors = await getColors(palette);
   const canvas = await createCanvas(width, height, colors);
-  console.log("Generated canvas:", canvas);
 
   const filledCanvas = async () => {
     // TODO: https://recalll.co/?q=javascript%20-%20HTML5%20canvas%20toDataURL%20not%20working%20with%20an%20image%20on%20the%20canvas&type=code
@@ -34,12 +29,14 @@ async function getShareImage(width, height, url, bigText, smallText) {
     let imageY = (height / 2) - (imageSize / 2);
     if (!!bigText) imageY *= .65; // If there's text, move the image up
     let ctx = canvas.getContext("2d");
+
     base_image = new Image();
     base_image.src = url;
+    base_image.onerror = () => console.error(`${url} failed to load!`);
     base_image.onload = () => ctx.drawImage(base_image, imageX, imageY, imageSize, imageSize);
 
     // Add text if applicable
-    if (!!bigText) {
+    if (bigText) {
       let textY = (height / 2) + 50;
       let font = "Papyrus";
       ctx.font = `24px ${font}`;
@@ -47,7 +44,7 @@ async function getShareImage(width, height, url, bigText, smallText) {
       ctx.textAlign = "center";
       ctx.fillText(bigText, width / 2, textY);
 
-      if (!!smallText) {
+      if (smallText) {
         ctx.font = `18px ${font}`;
         ctx.fillStyle = "#A9A9A9";
         ctx.fillText(smallText, width / 2, textY + 30);
