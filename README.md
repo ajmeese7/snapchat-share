@@ -12,9 +12,9 @@
 
 <p align="center">Create your own shares for Snapchat, similar to Spotify's implementation.</p>
 <p align="center">
-  <img height="450px" alt="Spotify Share Example" src="https://user-images.githubusercontent.com/17814535/85864633-666cd600-b78a-11ea-8665-21e1e6b60504.jpg">
-  <img height="450px" alt="Snapchat Share Example" src="https://user-images.githubusercontent.com/17814535/85798729-92914400-b703-11ea-9844-710d9b3753e7.png">
-  <img height="450px" alt="Snapchat Share with Text" src="https://user-images.githubusercontent.com/17814535/85852715-c6f21800-b776-11ea-8ed2-786f770276fd.png">
+  <img height="450px" title="Spotify Share Example" alt="Spotify Share Example" src="https://user-images.githubusercontent.com/17814535/85864633-666cd600-b78a-11ea-8665-21e1e6b60504.jpg">
+  <img height="450px" title="Snapchat Share Example" alt="Snapchat Share Example" src="https://user-images.githubusercontent.com/17814535/85798729-92914400-b703-11ea-9844-710d9b3753e7.png">
+  <img height="450px" title="Snapchat Share with Text" alt="Snapchat Share with Text" src="https://user-images.githubusercontent.com/17814535/85852715-c6f21800-b776-11ea-8ed2-786f770276fd.png">
 </p>
 
 ## Idea
