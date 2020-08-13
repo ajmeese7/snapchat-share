@@ -25,6 +25,7 @@
     "browserify": "^16.5.1",
     "node-vibrant": "^3.1.5",
     "trianglify": "^4.0.0",
-    "uniq": "^1.0.1"
+    "uniq": "^1.0.1",
+    "jpeg-js": ">=0.4.0"
   }
 }
