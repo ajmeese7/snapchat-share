@@ -9,7 +9,10 @@
     <meta name="theme-color" content="#FFFC00">
     <link rel="icon" type="image/png" href="ghost.png">
 
-    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="index.js"></script>
     <script src="bundle.js"></script>
 
     <title>Demo - Snapchat Share</title>
@@ -32,48 +35,14 @@
         <label for="height">Image Height:</label><br>
         <input type="text" id="height" name="height" pattern="^[0-9]*$" placeholder="1080"><br>
 
-        <input type="button" value="Create Share!" onclick="prepShareCommand()"><br>
-        <!--<input type="button" value="Download Image!" onclick="prepShareCommand()">-->
+        <div id="buttons">
+            <button type="button" id="generateButton" class="btn btn-outline-warning" 
+                onclick="prepShareCommand()">Generate Share</button>
+            <a id="download" download>
+                <button id="downloadButton" type="button" class="btn btn-outline-success">Download</button>
+            </a>
+        </div>
     </form>
-
-    <script>
-        /**
-         * This function gets all the values from the inputs and passes them
-         * as parameters to the getShareImage function.
-         */
-        function prepShareCommand() {
-            let url = document.getElementById("image_url").value;
-            if (!url) url = URL.createObjectURL(document.getElementById("local_img").files[0]);
-            let bigText = document.getElementById("big_text").value;
-            let smallText = document.getElementById("small_text").value;
-            let width = document.getElementById("width").value;
-            let height = document.getElementById("height").value;
-
-            share.getShareImage(width, height, url, bigText, smallText);
-        }
-
-        /**
-         * Takes the canvas and appends it to the body, after clearing
-         * out any previous canvases that may have been on the page.
-         * @param {element} canvas - the canvas created by getShareImage
-         */
-        function addCanvasToPage(canvas) {
-            [].forEach.call(document.querySelectorAll('canvas'), function(e) {
-                // Removes any existing canvases on the page, so only the latest
-                // one will show up
-                e.parentNode.removeChild(e);
-            });
-
-            document.body.appendChild(canvas);
-
-            // TODO: Once I get rid of promsies, I can make this a parameter
-            // for the top function and uncomment the download button
-            // var link = document.createElement('a');
-            // link.download = 'filename.png';
-            // link.href = canvas.toDataURL()
-            // link.click();
-        }
-    </script>
 </body>
 
 </html>

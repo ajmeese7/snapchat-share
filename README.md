@@ -61,7 +61,7 @@ Next, download the project and change into the project directory. Open a termina
 within that directory and run `npm install` to download the required dependencies.
 
 Since the project is currently configured to display the result in your browser,
-you must run `browserify index.js --standalone share > bundle.js` to bundle all the required files
+you must run `browserify generateShare.js --standalone share > bundle.js` to bundle all the required files
 into one JavaScript file that the browser can use. When you want to call the function, it will 
 be called like `share.getShareImage(...)`.
 

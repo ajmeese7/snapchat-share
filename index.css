@@ -2,6 +2,12 @@
     outline: none;
 }
 
+/* https://clrs.cc/a11y/ */
+body {
+    background-color: #111;
+    color: #aaa;
+}
+
 form {
     margin: auto;
     margin-top: 50px;
@@ -16,22 +22,20 @@ input {
     max-width: 90vw;
 }
 input[type=text] {
-    height: 25px;
     padding: 6px;
+    background-color: #ddd;
+    border: 0;
+    color: #111;
 }
-input[type=button] {
-    background-color: #FFFC00;
-    text-decoration: none;
-    display: block;
-    margin: auto;
-    color: black;
-    border: 1px solid black;
-    font-size: 18px;
-    height: 35px;
-    cursor: pointer;
+
+#buttons button {
+    width: 49%;
+    margin-left: 0.3%;
 }
 
 canvas {
     display: table;
-    margin: 15px auto;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 35px;
 }
