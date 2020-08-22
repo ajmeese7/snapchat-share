@@ -22,39 +22,43 @@ async function getShareImage(width, height, url, bigText, smallText) {
   const colors = await getColors(palette);
   const canvas = await createCanvas(width, height, colors);
 
-  const filledCanvas = async () => {
-    // TODO: https://recalll.co/?q=javascript%20-%20HTML5%20canvas%20toDataURL%20not%20working%20with%20an%20image%20on%20the%20canvas&type=code
-    let imageSize = width / 2;
-    let imageX = (width / 2) - (imageSize / 2);
-    let imageY = (height / 2) - (imageSize / 2);
-    if (!!bigText) imageY *= .65; // If there's text, move the image up
-    let ctx = canvas.getContext("2d");
+  let imageSize = width / 2;
+  let imageX = (width / 2) - (imageSize / 2);
+  let imageY = (height / 2) - (imageSize / 2);
+  if (!!bigText) imageY *= .65; // If there's text, move the image up
+  let ctx = canvas.getContext("2d");
 
+  // https://stackoverflow.com/a/46639473/6456163
+  return new Promise(resolve => {
+    // https://stackoverflow.com/a/30517793/6456163
     base_image = new Image();
-    base_image.src = url;
+    base_image.crossOrigin = "anonymous";
     base_image.onerror = () => console.error(`${url} failed to load!`);
-    base_image.onload = () => ctx.drawImage(base_image, imageX, imageY, imageSize, imageSize);
+    base_image.onload = () => {
+      // Add image
+      ctx.drawImage(base_image, imageX, imageY, imageSize, imageSize);
 
-    // Add text if applicable
-    if (bigText) {
-      let textY = (height / 2) + 50;
-      let font = "Papyrus";
-      ctx.font = `24px ${font}`;
-      ctx.fillStyle = "white";
-      ctx.textAlign = "center";
-      ctx.fillText(bigText, width / 2, textY);
+      // Add text if applicable
+      if (bigText) {
+        let textY = (height / 2) + 50;
+        let font = "Alata";
+        ctx.font = `24px ${font}`;
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText(bigText, width / 2, textY);
 
-      if (smallText) {
-        ctx.font = `18px ${font}`;
-        ctx.fillStyle = "#A9A9A9";
-        ctx.fillText(smallText, width / 2, textY + 30);
+        if (smallText) {
+          // TODO: See if I can set a width wrap for this, %-wise
+          ctx.font = `18px ${font}`;
+          ctx.fillStyle = "#A9A9A9";
+          ctx.fillText(smallText, width / 2, textY + 25);
+        }
       }
+
+      resolve(canvas);
     }
-
-    return canvas;
-  }
-
-  return (async () => await filledCanvas() )();
+    base_image.src = url;
+  });
 }
 
 async function getColors(palette) {
