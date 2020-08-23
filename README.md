@@ -13,8 +13,8 @@
 <p align="center">Create your own shares for Snapchat, similar to Spotify's implementation.</p>
 <p align="center">
   <img height="450px" title="Spotify Share Example" alt="Spotify Share Example" src="https://user-images.githubusercontent.com/17814535/85864633-666cd600-b78a-11ea-8665-21e1e6b60504.jpg">
-  <img height="450px" title="Snapchat Share Example" alt="Snapchat Share Example" src="https://user-images.githubusercontent.com/17814535/85798729-92914400-b703-11ea-9844-710d9b3753e7.png">
-  <img height="450px" title="Snapchat Share with Text" alt="Snapchat Share with Text" src="https://user-images.githubusercontent.com/17814535/85852715-c6f21800-b776-11ea-8ed2-786f770276fd.png">
+  <img height="450px" title="Snapchat Share Example" alt="Snapchat Share Example" src="https://user-images.githubusercontent.com/17814535/90982218-5162b800-e52b-11ea-9756-abe0b8c52b98.png">
+  <img height="450px" title="Snapchat Share with Text" alt="Snapchat Share with Text" src="https://user-images.githubusercontent.com/17814535/90982193-24aea080-e52b-11ea-8550-cc52642fdb83.png">
 </p>
 
 ## Idea
@@ -44,10 +44,8 @@ As neat as that was, the Spotify share included some helpful details along with
 the image, in their case the song name and artist. I figured it would be cool
 to offer similar functionality, so I included a text parameter as well.
 
-Yes, the text doesn't look all that great right now. I wanted to use a nicer looking
-font like Spotify did, but I don't have the time to implement non-web safe fonts right
-now for the canvas. If somebody else would like to add in support for that, I would
-really appreciate it!
+You can also pass in a custom font URL, with the default being "Papyrus" if you
+should decide to not use this option.
 
 ## Installation
 First, make sure you have Node.js and npm installed on your machine. For a guide on
@@ -66,9 +64,6 @@ functioning properly. If you see something on the screen, you're good to go! Mov
 to the usage instructions to learn what you can do with it.
 
 ## Usage
-The behavior described below could change in the near future, as this is only the
-first iteration of the project. Documentation will be updated to reflect updates.
-
 #### getShareImage
 Parameters:
 - `width`: value in pixels; can pass viewer width if desired
@@ -76,6 +71,17 @@ Parameters:
 - `url`: the location of the image, either locally or online
 - `bigText`: larger text; optional parameter
 - `smallText`:  smaller text; required if big text used
+- `font`: the URL to a custom font, if so desired
+  - Defaults to the Papyrus font if no alternative is offered
+
+## Troubleshooting
+### downloadable font: rejected by sanitizer
+If you pass a font string like `https://fonts.googleapis.com/css?family=Alata`, 
+you are going to get this error. The issue lies in the lack of a file extension.
+
+The fix is to navigate to that link in your browser and browse the contents 
+until you find the URL with a file extension, which in this example is
+`https://fonts.gstatic.com/s/alata/v2/PbytFmztEwbIoce9zqY.woff2`.
 
 ## Plans
 I'm not sure which direction I want to take this project in yet, but I 

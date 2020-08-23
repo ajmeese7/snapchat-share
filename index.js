@@ -9,8 +9,9 @@ async function generateImage() {
     let smallText = document.getElementById("small_text").value;
     let width = document.getElementById("width").value;
     let height = document.getElementById("height").value;
+    let font = "https://fonts.gstatic.com/s/alata/v2/PbytFmztEwbIoce9zqY.woff2";
 
-    let canvas = await share.getShareImage(width, height, url, bigText, smallText);
+    let canvas = await share.getShareImage(width, height, url, bigText, smallText, font);
     [].forEach.call(document.querySelectorAll('canvas'), (el) => {
         // Removes any existing canvases on the page, so only the latest
         // one will show up

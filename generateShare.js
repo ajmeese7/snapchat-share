@@ -10,9 +10,10 @@ const trianglify = require('trianglify')
  * @param {string} url - the location of the image, either locally or online
  * @param {string} bigText - larger text; optional parameter
  * @param {string} smallText - smaller text; required if big text used
+ * @param {string} font - the URL to a custom font, if so desired
  * @returns {element} canvas - the generated image on a canvas
  */
-async function getShareImage(width, height, url, bigText, smallText) {
+async function getShareImage(width, height, url, bigText, smallText, font) {
   const palette = await Vibrant.from(url).getPalette(async (err, palette) => {
     if (err) return console.error("Error getting share image:", err);
     return palette;
@@ -28,6 +29,17 @@ async function getShareImage(width, height, url, bigText, smallText) {
   if (!!bigText) imageY *= .65; // If there's text, move the image up
   let ctx = canvas.getContext("2d");
 
+  // https://stackoverflow.com/a/36248266/6456163
+  let canvasFont = "Papyrus";
+  if (font) {
+    const myFont = new FontFace('Custom Font', `url(${font})`);
+    await myFont.load().then((font) => {
+      document.fonts.add(font);
+      console.log("Custom font loaded!");
+      canvasFont = "Custom Font";
+    });
+  }
+
   // https://stackoverflow.com/a/46639473/6456163
   return new Promise(resolve => {
     // https://stackoverflow.com/a/30517793/6456163
@@ -41,15 +53,14 @@ async function getShareImage(width, height, url, bigText, smallText) {
       // Add text if applicable
       if (bigText) {
         let textY = (height / 2) + 50;
-        let font = "Alata";
-        ctx.font = `24px ${font}`;
+        ctx.font = `24px ${canvasFont}`;
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
         ctx.fillText(bigText, width / 2, textY);
 
         if (smallText) {
           // TODO: See if I can set a width wrap for this, %-wise
-          ctx.font = `18px ${font}`;
+          ctx.font = `18px ${canvasFont}`;
           ctx.fillStyle = "#A9A9A9";
           ctx.fillText(smallText, width / 2, textY + 25);
         }
