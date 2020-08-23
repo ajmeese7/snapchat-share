@@ -59,10 +59,14 @@ async function getShareImage(width, height, url, bigText, smallText, font) {
         ctx.fillText(bigText, width / 2, textY);
 
         if (smallText) {
-          // TODO: See if I can set a width wrap for this, %-wise
-          ctx.font = `18px ${canvasFont}`;
-          ctx.fillStyle = "#A9A9A9";
-          ctx.fillText(smallText, width / 2, textY + 25);
+          // Wraps the lines at 85% of the canvas's width; could make a parameter
+          let lines = getLines(ctx, smallText, width * 0.85);
+          lines.forEach((line) => {
+            textY += 25;
+            ctx.font = `18px ${canvasFont}`;
+            ctx.fillStyle = "#A9A9A9";
+            ctx.fillText(line, width / 2, textY);
+          })
         }
       }
 
@@ -97,6 +101,33 @@ async function createCanvas(width, height, colors) {
   }).toCanvas();
   
   return canvas;
+}
+
+/**
+ * Breaks a string of text down into multiple lines
+ * to be wrapped at the specified width.
+ * @param {object} ctx - the canvas context
+ * @param {string} text - the text to be wrapped
+ * @param {integer} maxWidth - the width at which to wrap text
+ */
+function getLines(ctx, text, maxWidth) {
+  // https://stackoverflow.com/a/16599668/6456163
+  let words = text.split(" ");
+  let lines = [];
+  let currentLine = words[0];
+
+  for (let i = 1; i < words.length; i++) {
+    let word = words[i];
+    let width = ctx.measureText(currentLine + " " + word).width;
+    if (width < maxWidth) {
+      currentLine += " " + word;
+    } else {
+      lines.push(currentLine);
+      currentLine = word;
+    }
+  }
+  lines.push(currentLine);
+  return lines;
 }
 
 module.exports = { getShareImage };
