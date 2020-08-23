@@ -52,21 +52,25 @@ async function getShareImage(width, height, url, bigText, smallText, font) {
 
       // Add text if applicable
       if (bigText) {
-        let textY = (height / 2) + 50;
         ctx.font = `24px ${canvasFont}`;
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
-        ctx.fillText(bigText, width / 2, textY);
+        let textY = (height / 2) + 50;
+        let bigLines = getLines(ctx, bigText, width * 0.85);
+        bigLines.forEach((line) => {
+          ctx.fillText(line, width / 2, textY);
+          textY += 30;
+        });
 
         if (smallText) {
           // Wraps the lines at 85% of the canvas's width; could make a parameter
-          let lines = getLines(ctx, smallText, width * 0.85);
-          lines.forEach((line) => {
-            textY += 25;
-            ctx.font = `18px ${canvasFont}`;
-            ctx.fillStyle = "#A9A9A9";
+          ctx.font = `18px ${canvasFont}`;
+          ctx.fillStyle = "#A9A9A9";
+          let smallLines = getLines(ctx, smallText, width * 0.85);
+          smallLines.forEach((line) => {
             ctx.fillText(line, width / 2, textY);
-          })
+            textY += 25;
+          });
         }
       }
 
