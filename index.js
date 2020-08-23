@@ -21,5 +21,6 @@ async function generateImage() {
     document.body.appendChild(canvas);
     let download = document.getElementById("download");
     download.href = canvas.toDataURL();
-    download.download = `${bigText.split(' ').join('_')}.png`;
+    let fileName = bigText.split(' ').join('_');
+    download.download = `${fileName ? fileName : "download"}.png`;
 }
