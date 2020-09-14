@@ -93,3 +93,6 @@ If I should get this running on a server as a service you can call on
 demand, I will update the installation instructions accordingly. That
 may be a desirable direction, because I have always wanted to implement
 an API for something like this.
+
+I plan to allow users to select custom colors, and potentially not even
+require an image if they're just looking for a colored background for text.

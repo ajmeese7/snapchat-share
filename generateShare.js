@@ -23,7 +23,7 @@ async function getShareImage(width, height, url, bigText, smallText, font) {
   const colors = await getColors(palette);
   const canvas = await createCanvas(width, height, colors);
 
-  let imageSize = width / 2;
+  let imageSize = (height > width ? width : height) / 2;
   let imageX = (width / 2) - (imageSize / 2);
   let imageY = (height / 2) - (imageSize / 2);
   if (!!bigText) imageY *= .65; // If there's text, move the image up
@@ -55,7 +55,7 @@ async function getShareImage(width, height, url, bigText, smallText, font) {
         ctx.font = `24px ${canvasFont}`;
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
-        let textY = (height / 2) + 50;
+        let textY = (height / 2) + (height > width ? 50 : 85);
         let bigLines = getLines(ctx, bigText, width * 0.85);
         bigLines.forEach((line) => {
           ctx.fillText(line, width / 2, textY);
