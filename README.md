@@ -19,7 +19,7 @@
 
 ## Idea
 I'm sure many of you are familiar with Spotify and Snapchat. Both companies
-are on the bleeding edge of technology, and strive to perfect the little 
+are on the bleeding edge of technology, and strive to perfect the little
 things that keep people coming back.
 
 One of those little things that has stuck out to me the most is Spotify's
@@ -55,9 +55,9 @@ Next, download the project and change into the project directory. Open a termina
 within that directory and run `npm install` to download the required dependencies.
 
 Since the project is currently configured to display the result in your browser,
-you must run `browserify generateShare.js --standalone share > bundle.js` to bundle all the required files
-into one JavaScript file that the browser can use. When you want to call the function, it will 
-be called like `share.getShareImage(...)`.
+you must run `npm run build` to bundle all the required files into a single JavaScript file
+that the browser can use. When you want to call the function, it will be called like
+`share.getShareImage(...)`.
 
 Once you've done that, you can open the `index.html` file to make sure everything is
 functioning properly. If you see something on the screen, you're good to go! Move on
@@ -76,18 +76,16 @@ Parameters:
 
 ## Troubleshooting
 ### downloadable font: rejected by sanitizer
-If you pass a font string like `https://fonts.googleapis.com/css?family=Alata`, 
+If you pass a font string like `https://fonts.googleapis.com/css?family=Alata`,
 you are going to get this error. The issue lies in the lack of a file extension.
 
-The fix is to navigate to that link in your browser and browse the contents 
+The fix is to navigate to that link in your browser and browse the contents
 until you find the URL with a file extension, which in this example is
 `https://fonts.gstatic.com/s/alata/v2/PbytFmztEwbIoce9zqY.woff2`.
 
 ## Plans
-I'm not sure which direction I want to take this project in yet, but I 
-know it's working. Deciding if I want to implement it as an API or
-a NPM package or something that can be used in the browser is something
-I can work on later.
+I'm not sure which direction I want to take this project in yet, but I
+know it's working.
 
 If I should get this running on a server as a service you can call on
 demand, I will update the installation instructions accordingly. That
