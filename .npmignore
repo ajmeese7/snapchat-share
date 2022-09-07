@@ -1,0 +1,15 @@
+# Demo code
+bundle.js
+ghost.png
+index.html
+index.js
+index.css
+
+# Configuration files
+.editorconfig
+.gitignore
+.gitattributes
+
+# Generated files
+trianglify.png
+node_modules
