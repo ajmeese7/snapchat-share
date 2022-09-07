@@ -12,15 +12,15 @@ async function generateImage() {
   let font = "https://fonts.gstatic.com/s/alata/v2/PbytFmztEwbIoce9zqY.woff2";
 
   let canvas = await share.getShareImage(width, height, url, bigText, smallText, font);
-  [].forEach.call(document.querySelectorAll('canvas'), (el) => {
-      // Removes any existing canvases on the page, so only the latest
-      // one will show up
-      el.parentNode.removeChild(el);
+  [].forEach.call(document.querySelectorAll("canvas"), (el) => {
+    // Removes any existing canvases on the page, so only the latest
+    // one will show up
+    el.parentNode.removeChild(el);
   });
 
   document.body.appendChild(canvas);
   let download = document.getElementById("download");
   download.href = canvas.toDataURL();
-  let fileName = bigText.split(' ').join('_');
+  let fileName = bigText.split(" ").join("_");
   download.download = `${fileName ? fileName : "download"}.png`;
 }

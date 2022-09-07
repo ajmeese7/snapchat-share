@@ -1,38 +1,37 @@
 const Vibrant = require("node-vibrant");
-const trianglify = require('trianglify')
+const trianglify = require("trianglify");
 
 /**
  * Generates and displays an image that matches the description
- * in the README file. Can eaily be modified to return the canvas 
- * or it's PNG equivalent.
- * @param {number} width - value in pixels; can pass viewer width if desired
- * @param {number} height - value in pixels; can pass viewer height if desired
- * @param {string} url - the location of the image, either locally or online
- * @param {string} bigText - larger text; optional parameter
- * @param {string} smallText - smaller text; required if big text used
- * @param {string} font - the URL to a custom font, if so desired
- * @returns {element} canvas - the generated image on a canvas
+ * in the README file. Can eaily be modified to return the canvas
+ * or its PNG equivalent.
+ * @param {Number} width Value in pixels; can pass viewer width if desired
+ * @param {Number} height Value in pixels; can pass viewer height if desired
+ * @param {String} url The location of the image, either locally or online
+ * @param {String} bigText Larger text; optional parameter
+ * @param {String} smallText Smaller text; required if big text used
+ * @param {String} font The URL to a custom font, if so desired
+ * @returns {HTMLCanvasElement|undefined} The generated image on a canvas
  */
 async function getShareImage(width, height, url, bigText, smallText, font) {
-  const palette = await Vibrant.from(url).getPalette(async (err, palette) => {
-    if (err) return console.error("Error getting share image:", err);
-    return palette;
-  });
+  const palette = await Vibrant.from(url).getPalette((err, palette) =>
+    err ? console.error(err) : palette
+  );
 
   if (!palette) return undefined;
   const colors = await getColors(palette);
   const canvas = await createCanvas(width, height, colors);
 
-  let imageSize = (height > width ? width : height) / 2;
-  let imageX = (width / 2) - (imageSize / 2);
-  let imageY = (height / 2) - (imageSize / 2);
+  const imageSize = (height > width ? width : height) / 2;
+  const imageX = (width / 2) - (imageSize / 2);
+  const imageY = (height / 2) - (imageSize / 2);
   if (!!bigText) imageY *= .65; // If there's text, move the image up
-  let ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d");
 
   // https://stackoverflow.com/a/36248266/6456163
   let canvasFont = "Papyrus";
   if (font) {
-    const myFont = new FontFace('Custom Font', `url(${font})`);
+    const myFont = new FontFace("Custom Font", `url(${font})`);
     await myFont.load().then((font) => {
       document.fonts.add(font);
       console.log("Custom font loaded!");
@@ -41,7 +40,7 @@ async function getShareImage(width, height, url, bigText, smallText, font) {
   }
 
   // https://stackoverflow.com/a/46639473/6456163
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     // https://stackoverflow.com/a/30517793/6456163
     base_image = new Image();
     base_image.crossOrigin = "anonymous";
@@ -66,7 +65,7 @@ async function getShareImage(width, height, url, bigText, smallText, font) {
           // Wraps the lines at 85% of the canvas's width; could make a parameter
           ctx.font = `18px ${canvasFont}`;
           ctx.fillStyle = "#A9A9A9";
-          let smallLines = getLines(ctx, smallText, width * 0.85);
+          const smallLines = getLines(ctx, smallText, width * 0.85);
           smallLines.forEach((line) => {
             ctx.fillText(line, width / 2, textY);
             textY += 25;
@@ -76,18 +75,24 @@ async function getShareImage(width, height, url, bigText, smallText, font) {
 
       resolve(canvas);
     }
+
     base_image.src = url;
   });
 }
 
-async function getColors(palette) {
+/**
+ * Gets the colors from the palette.
+ * @param {Vibrant.Palette} palette The palette from `Vibrant`
+ * @returns {String[]} The colors to be used in the image
+ */
+function getColors(palette) {
   let colors = [];
   let i = 0;
   for (const swatch in palette) {
     // Adds the even numbered swatches, which are typically
     // vibrant, dark vibrant, and light vibrant/muted
-    let rgb = palette[swatch]._rgb.map(x => Math.round(x))
-    let color = `rgb(${rgb.toString()})`;
+    const rgb = palette[swatch]._rgb.map((x) => Math.round(x));
+    const color = `rgb(${rgb.toString()})`;
     if (i % 2) colors.push(color);
     i++;
   }
@@ -95,7 +100,14 @@ async function getColors(palette) {
   return colors;
 }
 
-async function createCanvas(width, height, colors) {
+/**
+ * Creates a canvas with a `trianglify` background.
+ * @param {Number} width The width of the canvas
+ * @param {Number} height The height of the canvas
+ * @param {String[]} colors The colors to be used in the image
+ * @returns {HTMLCanvasElement} The canvas with the triangle pattern
+ */
+function createCanvas(width, height, colors) {
   const canvas = trianglify({
     width: width,
     height: height,
@@ -103,16 +115,17 @@ async function createCanvas(width, height, colors) {
     variance: 1.0,
     xColors: colors
   }).toCanvas();
-  
+
   return canvas;
 }
 
 /**
  * Breaks a string of text down into multiple lines
  * to be wrapped at the specified width.
- * @param {object} ctx - the canvas context
- * @param {string} text - the text to be wrapped
- * @param {integer} maxWidth - the width at which to wrap text
+ * @param {Object} ctx The canvas context
+ * @param {String} text The text to be wrapped
+ * @param {Integer} maxWidth The width at which to wrap text
+ * @returns {String[]} The array of lines
  */
 function getLines(ctx, text, maxWidth) {
   // https://stackoverflow.com/a/16599668/6456163
@@ -130,6 +143,7 @@ function getLines(ctx, text, maxWidth) {
       currentLine = word;
     }
   }
+
   lines.push(currentLine);
   return lines;
 }
