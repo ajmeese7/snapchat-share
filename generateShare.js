@@ -55,7 +55,7 @@ async function getShareImage(width, height, url, bigText, smallText, font) {
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
         let textY = (height / 2) + (height > width ? 50 : 85);
-        let bigLines = getLines(ctx, bigText, width * 0.85);
+        const bigLines = getLines(ctx, bigText, width * 0.85);
         bigLines.forEach((line) => {
           ctx.fillText(line, width / 2, textY);
           textY += 30;
@@ -129,7 +129,7 @@ function createCanvas(width, height, colors) {
  */
 function getLines(ctx, text, maxWidth) {
   // https://stackoverflow.com/a/16599668/6456163
-  let words = text.split(" ");
+  const words = text.split(" ");
   let lines = [];
   let currentLine = words[0];
 

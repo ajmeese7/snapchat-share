@@ -5,13 +5,13 @@
 async function generateImage() {
   let url = document.getElementById("image_url").value;
   if (!url) url = URL.createObjectURL(document.getElementById("local_img").files[0]);
-  let bigText = document.getElementById("big_text").value;
-  let smallText = document.getElementById("small_text").value;
-  let width = document.getElementById("width").value;
-  let height = document.getElementById("height").value;
-  let font = "https://fonts.gstatic.com/s/alata/v2/PbytFmztEwbIoce9zqY.woff2";
+  const bigText = document.getElementById("big_text").value;
+  const smallText = document.getElementById("small_text").value;
+  const width = document.getElementById("width").value;
+  const height = document.getElementById("height").value;
+  const font = "https://fonts.gstatic.com/s/alata/v2/PbytFmztEwbIoce9zqY.woff2";
 
-  let canvas = await share.getShareImage(width, height, url, bigText, smallText, font);
+  const canvas = await share.getShareImage(width, height, url, bigText, smallText, font);
   [].forEach.call(document.querySelectorAll("canvas"), (el) => {
     // Removes any existing canvases on the page, so only the latest
     // one will show up
@@ -19,8 +19,8 @@ async function generateImage() {
   });
 
   document.body.appendChild(canvas);
-  let download = document.getElementById("download");
+  const download = document.getElementById("download");
   download.href = canvas.toDataURL();
-  let fileName = bigText.split(" ").join("_");
+  const fileName = bigText.split(" ").join("_");
   download.download = `${fileName ? fileName : "download"}.png`;
 }
