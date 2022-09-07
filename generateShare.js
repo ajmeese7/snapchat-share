@@ -5,12 +5,12 @@ const trianglify = require("trianglify");
  * Generates and displays an image that matches the description
  * in the README file. Can eaily be modified to return the canvas
  * or its PNG equivalent.
- * @param {Number} width Value in pixels; can pass viewer width if desired
- * @param {Number} height Value in pixels; can pass viewer height if desired
+ * @param {Number} width Desired width of the image in pixels
+ * @param {Number} height Desired height of the image in pixels
  * @param {String} url The location of the image, either locally or online
- * @param {String} bigText Larger text; optional parameter
- * @param {String} smallText Smaller text; required if big text used
- * @param {String} font The URL to a custom font, if so desired
+ * @param {String} bigText Larger text
+ * @param {String} smallText Smaller text
+ * @param {String} font The URL to a custom font, if desired
  * @returns {HTMLCanvasElement|undefined} The generated image on a canvas
  */
 async function getShareImage(width, height, url, bigText, smallText, font) {
@@ -24,7 +24,7 @@ async function getShareImage(width, height, url, bigText, smallText, font) {
 
   const imageSize = (height > width ? width : height) / 2;
   const imageX = (width / 2) - (imageSize / 2);
-  const imageY = (height / 2) - (imageSize / 2);
+  let imageY = (height / 2) - (imageSize / 2);
   if (!!bigText) imageY *= .65; // If there's text, move the image up
   const ctx = canvas.getContext("2d");
 
