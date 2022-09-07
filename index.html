@@ -2,47 +2,47 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#FFFC00">
-    <link rel="icon" type="image/png" href="ghost.png">
+  <meta charset="utf-8" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#FFFC00">
+  <link rel="icon" type="image/png" href="ghost.png">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <script src="index.js"></script>
-    <script src="bundle.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <script src="index.js"></script>
+  <script src="bundle.js"></script>
 
-    <title>Demo - Snapchat Share</title>
+  <title>Demo - Snapchat Share</title>
 </head>
 
 <body>
-    <form>
-        <label for="image_url">Image URL:</label><br>
-        <input type="text" id="image_url" name="image_url" placeholder="website.com/your_image_url"><br>
-        <label for="local_img">Local Image:</label><br>
-        <input type="file" id="local_img" name="local_img" accept="image/*"><br>
+  <form>
+    <label for="image_url">Image URL:</label><br>
+    <input type="text" id="image_url" name="image_url" placeholder="website.com/your_image_url"><br>
+    <label for="local_img">Local Image:</label><br>
+    <input type="file" id="local_img" name="local_img" accept="image/*"><br>
 
-        <label for="big_text">Big Text:</label><br>
-        <input type="text" id="big_text" name="big_text" placeholder="Your text here"><br>
-        <label for="small_text">Small Text:</label><br>
-        <input type="text" id="small_text" name="small_text" placeholder="Your text here"><br>
+    <label for="big_text">Big Text:</label><br>
+    <input type="text" id="big_text" name="big_text" placeholder="Your text here"><br>
+    <label for="small_text">Small Text:</label><br>
+    <input type="text" id="small_text" name="small_text" placeholder="Your text here"><br>
 
-        <label for="width">Image Width:</label><br>
-        <input type="text" id="width" name="width" pattern="^[0-9]*$" placeholder="1920"><br>
-        <label for="height">Image Height:</label><br>
-        <input type="text" id="height" name="height" pattern="^[0-9]*$" placeholder="1080"><br>
+    <label for="width">Image Width:</label><br>
+    <input type="text" id="width" name="width" pattern="^[0-9]*$" placeholder="1920"><br>
+    <label for="height">Image Height:</label><br>
+    <input type="text" id="height" name="height" pattern="^[0-9]*$" placeholder="1080"><br>
 
-        <div id="buttons">
-            <button type="button" id="generateButton" class="btn btn-outline-warning" 
-                onclick="generateImage()">Generate Share</button>
-            <a id="download" download>
-                <button id="downloadButton" type="button" class="btn btn-outline-success">Download</button>
-            </a>
-        </div>
-    </form>
+    <div id="buttons">
+      <button type="button" id="generateButton" class="btn btn-outline-warning"
+        onclick="generateImage()">Generate Share</button>
+      <a id="download" download>
+        <button id="downloadButton" type="button" class="btn btn-outline-success">Download</button>
+      </a>
+    </div>
+  </form>
 </body>
 
 </html>

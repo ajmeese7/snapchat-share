@@ -1,41 +1,41 @@
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 /* https://clrs.cc/a11y/ */
 body {
-    background-color: #111;
-    color: #aaa;
+  background-color: #111;
+  color: #aaa;
 }
 
 form {
-    margin: auto;
-    margin-top: 50px;
-    display: table;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+  margin-top: 50px;
+  display: table;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 input {
-    width: 400px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    max-width: 90vw;
+  width: 400px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  max-width: 90vw;
 }
 input[type=text] {
-    padding: 6px;
-    background-color: #ddd;
-    border: 0;
-    color: #111;
+  padding: 6px;
+  background-color: #ddd;
+  border: 0;
+  color: #111;
 }
 
 #buttons button {
-    width: 49%;
-    margin-left: 0.3%;
+  width: 49%;
+  margin-left: 0.3%;
 }
 
 canvas {
-    display: table;
-    margin: auto;
-    margin-top: 15px;
-    margin-bottom: 35px;
+  display: table;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 35px;
 }
