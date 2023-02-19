@@ -23,7 +23,7 @@
   "homepage": "https://github.com/ajmeese7/snapchat-share#readme",
   "dependencies": {
     "browserify": "^16.5.1",
-    "node-vibrant": "^3.1.5",
+    "node-vibrant": "^3.1.6",
     "trianglify": "^4.0.0",
     "uniq": "^1.0.1",
     "jpeg-js": ">=0.4.4"
